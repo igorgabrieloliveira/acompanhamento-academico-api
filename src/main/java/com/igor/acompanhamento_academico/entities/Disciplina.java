@@ -34,10 +34,6 @@ public class Disciplina {
     @Column(nullable = false)
     private Integer cargaHoraria;
 
-    // @ManyToOne
-    // @JoinColumn(name = "aluno_id", nullable = false)
-    // private Aluno aluno;
-
     public Disciplina(){}
     public Disciplina(String name, String semestre, Integer maximoFaltas){
         this.name = name;
