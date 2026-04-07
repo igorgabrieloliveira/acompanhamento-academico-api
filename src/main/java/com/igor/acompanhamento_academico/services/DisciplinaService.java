@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.igor.acompanhamento_academico.dtos.disciplina.DisciplinaRequestDTO;
+import com.igor.acompanhamento_academico.dtos.disciplina.DisciplinaResponseDTO;
 import com.igor.acompanhamento_academico.entities.Disciplina;
 import com.igor.acompanhamento_academico.repositories.DisciplinaRepository;
 
@@ -16,11 +18,19 @@ public class DisciplinaService {
         this.repository = repository;
     }
 
-    public Disciplina cadastrarDisciplina (Disciplina disciplina){
-        return repository.save(disciplina);
+    public DisciplinaResponseDTO cadastrarDisciplina (DisciplinaRequestDTO dto){
+        Disciplina newDisciplina = new Disciplina(dto.name(), dto.semestre(), dto.maximoFaltas(), dto.cargaHoraria());
+        
+
+        Disciplina save = repository.save(newDisciplina);
+        return new DisciplinaResponseDTO(save);
     }
 
-    public List<Disciplina> listarTodos(){
-        return repository.findAll();
+    public List<DisciplinaResponseDTO> listarTodos(){
+        List<DisciplinaResponseDTO> listDTO = repository.findAll()
+                                .stream()
+                                .map(n -> new DisciplinaResponseDTO(n))
+                                .toList();
+        return listDTO;
     }
 }

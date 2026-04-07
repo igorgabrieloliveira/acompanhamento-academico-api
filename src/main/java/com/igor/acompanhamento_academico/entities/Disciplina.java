@@ -35,10 +35,11 @@ public class Disciplina {
     private Integer cargaHoraria;
 
     public Disciplina(){}
-    public Disciplina(String name, String semestre, Integer maximoFaltas){
+    public Disciplina(String name, String semestre, Integer maximoFaltas, Integer cargaHoraria){
         this.name = name;
         this.semestre = semestre;
         this.maximoFaltas = maximoFaltas;
+        this.cargaHoraria = cargaHoraria;
     }
 
 }

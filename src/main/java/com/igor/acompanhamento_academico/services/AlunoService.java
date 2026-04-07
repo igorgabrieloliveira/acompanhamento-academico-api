@@ -2,6 +2,8 @@ package com.igor.acompanhamento_academico.services;
 
 import org.springframework.stereotype.Service;
 
+import com.igor.acompanhamento_academico.dtos.aluno.AlunoRequestDTO;
+import com.igor.acompanhamento_academico.dtos.aluno.AlunoResponseDTO;
 import com.igor.acompanhamento_academico.entities.Aluno;
 import com.igor.acompanhamento_academico.repositories.AlunoRepository;
 
@@ -13,8 +15,10 @@ public class AlunoService {
         this.repository = repository;
     }
 
-    public Aluno cadastrarAluno(Aluno aluno){
-        return repository.save(aluno);
+    public AlunoResponseDTO cadastrarAluno(AlunoRequestDTO dto){
+        Aluno newAluno = new Aluno(dto.name(), dto.email(), dto.password());
+        Aluno save = repository.save(newAluno);
+        return new AlunoResponseDTO(save);
     }
 
 
