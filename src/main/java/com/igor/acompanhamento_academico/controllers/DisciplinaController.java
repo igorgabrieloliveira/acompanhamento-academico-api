@@ -33,7 +33,7 @@ public class DisciplinaController {
     }
 
     @GetMapping
-    public List<DisciplinaResponseDTO> getDisciplina(){
+    public List<DisciplinaResponseDTO> getDisciplinas(){
         return service.listarTodos();
     }
 
