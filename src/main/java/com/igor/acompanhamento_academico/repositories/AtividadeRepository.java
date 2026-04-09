@@ -8,4 +8,5 @@ import com.igor.acompanhamento_academico.entities.Atividade;
 
 public interface AtividadeRepository extends JpaRepository<Atividade, Long>{
     List<Atividade> findByMatricula_Aluno_IdAndStatusOrderByDataEntregaAsc(Long alunoId, String status);
+    List<Atividade> findByMatricula_IdOrderByDataEntregaAsc(Long matriculaId);
 }

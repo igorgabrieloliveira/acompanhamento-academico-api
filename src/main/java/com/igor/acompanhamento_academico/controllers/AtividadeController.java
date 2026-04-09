@@ -38,6 +38,4 @@ public class AtividadeController {
         return ResponseEntity.ok(listAtividadeDto);
     }
 
-   
-
 }

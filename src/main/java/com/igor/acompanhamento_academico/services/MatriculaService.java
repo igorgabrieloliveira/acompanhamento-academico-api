@@ -3,7 +3,6 @@ package com.igor.acompanhamento_academico.services;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import com.igor.acompanhamento_academico.dtos.matricula.MatriculaRequestDTO;
 import com.igor.acompanhamento_academico.dtos.matricula.MatriculaResponseDTO;
 import com.igor.acompanhamento_academico.entities.Aluno;
@@ -19,7 +18,11 @@ public class MatriculaService {
     private final MatriculaRepository repository;
     private final AlunoRepository repositoryAluno;
     private final DisciplinaRepository repositoryDisciplina;
-    public MatriculaService(MatriculaRepository repository, AlunoRepository repositoryAluno, DisciplinaRepository repositoryDisciplina){
+
+    public MatriculaService(MatriculaRepository repository,
+        AlunoRepository repositoryAluno,
+        DisciplinaRepository repositoryDisciplina
+    ){
         this.repository = repository;
         this.repositoryAluno = repositoryAluno;
         this.repositoryDisciplina = repositoryDisciplina;
@@ -40,5 +43,13 @@ public class MatriculaService {
         List<MatriculaResponseDTO> listDto = repository.findAll().stream().map(n -> new MatriculaResponseDTO(n)).toList();
         return listDto;
     }
+
+    public MatriculaResponseDTO getById(Long Id){
+        Matricula newMatricula = repository.findById(Id).orElseThrow(() -> new RuntimeException("Matricula nao encontrada no sistema!"));
+
+        return new MatriculaResponseDTO(newMatricula);
+    }
+
+    
 }
 

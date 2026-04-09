@@ -21,6 +21,4 @@ public class AlunoService {
         return new AlunoResponseDTO(save);
     }
 
-
-
 }

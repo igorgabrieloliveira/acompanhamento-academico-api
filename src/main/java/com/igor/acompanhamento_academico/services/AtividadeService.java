@@ -46,5 +46,13 @@ public class AtividadeService {
                 .toList();
     }
 
+    public List<AtividadeResponseDTO> listarAtividadesPorMatricula(Long matriculaId){
+        List<AtividadeResponseDTO> listDto = respositoryAtividade.
+                                    findByMatricula_IdOrderByDataEntregaAsc(matriculaId)
+                                    .stream()
+                                    .map(n -> new AtividadeResponseDTO(n)).toList();
+        return listDto;
+    }
+
 
 }
